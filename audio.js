@@ -2,9 +2,12 @@
   'use strict';
 
   var API_ROOT = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
+  var ICIBA_ROOT = 'https://www.iciba.com/word?w=';
   var CACHE_TTL = 1000 * 60 * 30;
   var REQUEST_TIMEOUT = 6500;
   var wordCache = new Map();
+  var wordAudioCache = new Map();
+  var dictionaryCache = new Map();
   var activeId = 0;
   var activeAudio = null;
   var activeUtterance = null;
@@ -64,10 +67,10 @@
     return candidates.length ? candidates[0].url : '';
   }
 
-  function fetchEntries(word) {
+  function fetchDictionaryEntries(word) {
     var key = String(word || '').trim().toLowerCase();
     var now = Date.now();
-    var cached = wordCache.get(key);
+    var cached = dictionaryCache.get(key);
 
     if (cached && cached.expires > now) return cached.promise;
 
@@ -93,6 +96,71 @@
       return result;
     });
 
+    dictionaryCache.set(key, { promise: promise, expires: now + CACHE_TTL });
+    return promise;
+  }
+
+  function extractIcibaAudio(html, accent) {
+    var field = normalizeAccent(accent) === 'us' ? 'ph_am_mp3' : 'ph_en_mp3';
+    var marker = '"' + field + '":"';
+    var start = html.indexOf(marker);
+    if (start < 0) return '';
+    start += marker.length;
+    var end = html.indexOf('"', start);
+    if (end < 0) return '';
+    return normalizeAudioUrl(html.slice(start, end).replace(/\\\//g, '/'));
+  }
+
+  function fetchIcibaEntries(word) {
+    var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    var timer = controller ? window.setTimeout(function () { controller.abort(); }, REQUEST_TIMEOUT) : null;
+    return fetch(ICIBA_ROOT + encodeURIComponent(word), {
+      method: 'GET',
+      credentials: 'omit',
+      headers: { Accept: 'text/html' },
+      signal: controller ? controller.signal : undefined
+    }).then(function (response) {
+      if (!response.ok) throw new Error('Iciba response: ' + response.status);
+      return response.text();
+    }).then(function (html) {
+      return {
+        uk: extractIcibaAudio(html, 'uk'),
+        us: extractIcibaAudio(html, 'us')
+      };
+    }).catch(function () {
+      return { uk: '', us: '' };
+    }).then(function (result) {
+      if (timer) window.clearTimeout(timer);
+      return result;
+    });
+  }
+
+  function fetchEntries(word) {
+    var key = String(word || '').trim().toLowerCase();
+    var now = Date.now();
+    var cached = wordCache.get(key);
+    if (cached && cached.expires > now) return cached.promise;
+
+    var icibaMap = window.ICIBA_WORD_AUDIO || {};
+    var icibaResult = icibaMap[key];
+    var promise;
+
+    if (icibaResult && icibaResult.uk && icibaResult.us) {
+      wordAudioCache.set(key, icibaResult);
+      promise = Promise.resolve(icibaResult);
+    } else {
+      promise = fetchDictionaryEntries(key).then(function (dictionaryResult) {
+        return {
+          uk: icibaResult && icibaResult.uk ? icibaResult.uk : dictionaryResult.uk,
+          us: icibaResult && icibaResult.us ? icibaResult.us : dictionaryResult.us
+        };
+      });
+    }
+
+    promise = promise.then(function (result) {
+      wordAudioCache.set(key, result);
+      return result;
+    });
     wordCache.set(key, { promise: promise, expires: now + CACHE_TTL });
     return promise;
   }
@@ -182,18 +250,26 @@
     return new Promise(function (resolve) {
       var audio = new Audio();
       var settled = false;
+      var timeout = null;
       activeAudio = audio;
+      configureAudioSession();
       audio.preload = 'auto';
+      audio.setAttribute('playsinline', '');
+      audio.setAttribute('webkit-playsinline', '');
       audio.src = url;
 
       function finish(result) {
         if (settled) return;
         settled = true;
+        window.clearTimeout(timeout);
         audio.onended = null;
         audio.onerror = null;
         if (activeAudio === audio && id === activeId) activeAudio = null;
         resolve(result);
       }
+      timeout = window.setTimeout(function () {
+        finish(id === activeId ? { source: 'audio-error' } : { source: 'cancelled' });
+      }, 9000);
 
       audio.onended = function () {
         finish(id === activeId ? { source: 'dictionary' } : { source: 'cancelled' });
@@ -214,8 +290,19 @@
   async function play(word, accent, options) {
     var normalizedAccent = normalizeAccent(accent);
     var opts = options || {};
+    var key = String(word || '').trim().toLowerCase();
     stop();
     var id = activeId;
+
+    var cachedUrls = wordAudioCache.get(key);
+    var cachedUrl = cachedUrls ? (cachedUrls[normalizedAccent] || cachedUrls.uk || cachedUrls.us || '') : '';
+    if (cachedUrl) {
+      var cachedAudioResult = await playUrl(cachedUrl, id);
+      if (id !== activeId) return { source: 'cancelled' };
+      if (cachedAudioResult.source === 'dictionary') {
+        return Object.assign(cachedAudioResult, { word: word, accent: normalizedAccent, provider: 'iciba' });
+      }
+    }
 
     if (navigator.onLine === false) {
       var offlineResult = await speak(word, normalizedAccent, id);
@@ -251,6 +338,12 @@
   function preload(word) {
     if (navigator.onLine === false) return Promise.resolve({ uk: '', us: '' });
     return fetchEntries(word).catch(function () { return { uk: '', us: '' }; });
+  }
+
+  function preloadWords(words) {
+    return Promise.all((words || []).map(function (word) {
+      return preload(word).catch(function () { return { uk: '', us: '' }; });
+    }));
   }
 
   function configureAudioSession() {
@@ -408,6 +501,28 @@
     });
   }
 
+  function playWordElement(elementId, word, accent) {
+    var normalizedAccent = normalizeAccent(accent);
+    var element = document.getElementById(elementId);
+    var map = window.ICIBA_WORD_AUDIO || {};
+    var urls = map[String(word || '').trim().toLowerCase()];
+    var url = urls ? urls[normalizedAccent] : '';
+    if (!element || !url) return play(word, normalizedAccent);
+
+    stop();
+    var token = activeId;
+    configureAudioSession();
+    activePhonemeElement = element;
+    element.src = url;
+    element.preload = 'auto';
+    element.load();
+    return waitForPhonemeElement(element, token, function () {
+      return playUrl(url, token);
+    }).then(function (result) {
+      return Object.assign(result, { word: word, accent: normalizedAccent, provider: 'iciba' });
+    });
+  }
+
   function preloadPhoneme(id) {
     return Promise.all([loadPhonemeBuffer(id, 'uk'), loadPhonemeBuffer(id, 'us')]);
   }
@@ -424,16 +539,26 @@
 
   window.IPAAudio = {
     playPhoneme: playPhoneme,
+    playWordElement: playWordElement,
     playWord: play,
     play: play,
     preloadPhoneme: preloadPhoneme,
     preloadWord: preload,
+    preloadWords: preloadWords,
     preload: preload,
     stop: stop,
     unlock: unlock,
     languageFor: languageFor
   };
 })();
+
+
+
+
+
+
+
+
 
 
 

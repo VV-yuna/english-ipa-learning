@@ -6,3 +6,7 @@ Thumbs.db
 node_modules/
 .chrome-*/
 .edge-*/
+
+_*test*.html
+*-check.html
+*-check.err

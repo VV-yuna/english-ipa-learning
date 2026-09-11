@@ -88,6 +88,21 @@
     }
   }
 
+  async function playExampleWithButton(button, elementId, word, accent) {
+    if (button.disabled) return null;
+    audio.unlock();
+    button.disabled = true;
+    button.setAttribute('aria-busy', 'true');
+    try {
+      var result = await audio.playWordElement(elementId, word, accent);
+      reportAudioResult(result);
+      return result;
+    } finally {
+      button.disabled = false;
+      button.removeAttribute('aria-busy');
+    }
+  }
+
   function teardownPractice() {
     audio.stop();
     if (activeRecorder) {
@@ -150,7 +165,7 @@
       '<div class="phoneme-audio-bank" aria-hidden="true">' +
         '<audio id="phoneme-audio-uk" preload="auto" playsinline src="' + escapeAttribute(item.audio.uk) + '"></audio>' +
         '<audio id="phoneme-audio-us" preload="auto" playsinline src="' + escapeAttribute(item.audio.us) + '"></audio>' +
-      '</div>' +
+      '</div>' + wordAudioBankHtml(item) +
       '<div class="detail-toolbar">' +
         '<a class="back-button" href="#/">' + arrowIcon() + '返回全部音标</a>' +
         '<span class="toolbar-index">' + escapeHtml(groupTitle(item.group)) + ' · ' + (item.type === 'vowel' ? '元音' : '辅音') + '</span></div>' +
@@ -169,8 +184,16 @@
       '<section class="panel" aria-labelledby="examples-heading"><div class="panel-heading"><div><h2 id="examples-heading">5 个单词示例</h2>' +
         '<p>单词使用深蓝色显示，每个例词都可分别播放英音和美音。</p></div></div>' +
         '<div class="example-list">' + item.examples.map(exampleHtml).join('') + '</div>' +
-        '<div class="speech-note">' + speakerIcon() + '<span>音素音频已内置于网站；例词优先使用在线词典音频，资源缺失或网络不可用时自动切换为浏览器语音合成。</span></div></section>' +
+        '<div class="speech-note">' + speakerIcon() + '<span>音素音频已内置于网站；例词优先使用金山词霸/爱词霸在线发音，资源缺失或网络不可用时自动切换为浏览器语音合成。</span></div></section>' +
       practiceHtml(item) + '</div>';
+  }
+
+  function wordAudioBankHtml(item) {
+    return '<div class="word-audio-bank" aria-hidden="true">' + item.examples.map(function (example, index) {
+      return ['uk', 'us'].map(function (accent) {
+        return '<audio id="word-audio-' + index + '-' + accent + '" preload="none" playsinline></audio>';
+      }).join('');
+    }).join('') + '</div>';
   }
 
   function accentCardHtml(item, accent) {
@@ -187,13 +210,13 @@
       '</div><div class="demo-note">孤立音素 · 不播放示例单词</div></article>';
   }
 
-  function exampleHtml(example) {
+  function exampleHtml(example, index) {
     return '<div class="example-row"><div class="example-word">' + escapeHtml(example.word) + '</div>' +
       '<div class="transcription transcription-uk"><small>英音</small>/' + escapeHtml(example.ukIpa) + '/</div>' +
       '<div class="transcription transcription-us"><small>美音</small>/' + escapeHtml(example.usIpa) + '/</div>' +
       '<div class="example-actions">' +
-        '<button class="example-play" type="button" data-example-word="' + escapeAttribute(example.word) + '" data-example-accent="uk" aria-label="播放 ' + escapeAttribute(example.word) + ' 的英音">英</button>' +
-        '<button class="example-play" type="button" data-example-word="' + escapeAttribute(example.word) + '" data-example-accent="us" aria-label="播放 ' + escapeAttribute(example.word) + ' 的美音">美</button>' +
+        '<button class="example-play" type="button" data-example-word="' + escapeAttribute(example.word) + '" data-example-index="' + index + '" data-example-accent="uk" aria-label="播放 ' + escapeAttribute(example.word) + ' 的英音">英</button>' +
+        '<button class="example-play" type="button" data-example-word="' + escapeAttribute(example.word) + '" data-example-index="' + index + '" data-example-accent="us" aria-label="播放 ' + escapeAttribute(example.word) + ' 的美音">美</button>' +
       '</div></div>';
   }
 
@@ -223,6 +246,7 @@
     document.title = '/' + item.symbol + '/ 音标学习｜英语音标学习';
     appView.innerHTML = detailHtml(item);
     audio.preloadPhoneme(item.id);
+    audio.preloadWords(item.examples.map(function (example) { return example.word; }));
 
     var followButton = document.getElementById('follow-button');
     var stopButton = document.getElementById('stop-button');
@@ -244,7 +268,9 @@
     });
     appView.querySelectorAll('[data-example-word]').forEach(function (button) {
       button.addEventListener('click', function () {
-        playWithButton(button, button.getAttribute('data-example-word'), button.getAttribute('data-example-accent'), 'word');
+        var accent = button.getAttribute('data-example-accent');
+        var index = button.getAttribute('data-example-index');
+        playExampleWithButton(button, 'word-audio-' + index + '-' + accent, button.getAttribute('data-example-word'), accent);
       });
     });
     window.scrollTo(0, 0);
@@ -465,6 +491,12 @@
     route();
   }
 })();
+
+
+
+
+
+
 
 
 

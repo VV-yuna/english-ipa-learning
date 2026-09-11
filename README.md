@@ -36,7 +36,7 @@ node .\tools\generate-diagrams.js
 node .\tools\verify-assets.js
 ```
 
-例词音频来自在线词典，网络不可用时会回退浏览器英文语音合成。孤立音素音频和 SVG 口型图均不依赖网络。
+例词音频优先来自金山词霸/爱词霸网页词典，失败时回退其他在线词典和浏览器英文语音合成。孤立音素音频和 SVG 口型图均不依赖网络。
 
 ## 临时公网分享
 
@@ -47,6 +47,9 @@ powershell -ExecutionPolicy Bypass -File .\start-public.ps1
 ```
 
 该方式依赖当前电脑和终端进程，不适合长期使用。永久地址：https://VV-yuna.github.io/english-ipa-learning/
+
+
+
 
 
 

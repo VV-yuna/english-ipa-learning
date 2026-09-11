@@ -10,14 +10,15 @@ The isolated phoneme audio files in `assets/audio/` are generated offline with e
 
 Only the generated WAV output is included in this site; the eSpeak NG executable is not redistributed.
 
-## Online dictionary audio
+## Kingsoft Iciba audio
 
-Example word audio is requested at runtime from Dictionary API:
+Example word audio is requested at runtime from Kingsoft Iciba:
 
-- Service: <https://dictionaryapi.dev/>
+- Service: <https://www.iciba.com/>
 - Purpose: British and American example-word pronunciation
-- Fallback: browser `speechSynthesis` when audio is unavailable
+- Fallback: Dictionary API, then browser `speechSynthesis` when audio is unavailable
 
 ## Articulation diagrams
 
 All SVG diagrams in `assets/diagrams/` are original diagrams created for this project from general articulatory-phonetics reference material.
+
