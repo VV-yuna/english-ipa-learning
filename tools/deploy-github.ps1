@@ -144,6 +144,16 @@ function Get-GitBlobHash([string]$filePath) {
   }
 }
 
+$remoteBlobShas = @{}
+try {
+  $remoteTree = Invoke-RestMethod -Uri "$repoApi/git/trees/main?recursive=1" -Headers $apiHeaders
+  foreach ($entry in $remoteTree.tree) {
+    if ($entry.type -eq 'blob') { $remoteBlobShas[$entry.sha] = $true }
+  }
+} catch {
+  # The bootstrap commit may not be visible yet; the upload loop will retry.
+}
+
 $treeEntries = New-Object System.Collections.Generic.List[object]
 $fileIndex = 0
 foreach ($file in $files) {
@@ -151,15 +161,8 @@ foreach ($file in $files) {
   $relative = $file.FullName.Substring($root.Length + 1).Replace('\', '/')
   $localSha = Get-GitBlobHash $file.FullName
   $blobSha = $null
-  try {
-    $existingBlob = Invoke-RestMethod -Uri "$repoApi/git/blobs/$localSha" -Headers $apiHeaders
-    $blobSha = $existingBlob.sha
-  } catch {
-    $statusCode = $_.Exception.Response.StatusCode.value__
-    if ($statusCode -ne 404) {
-      # A transient lookup failure will fall through to a normal upload.
-      $blobSha = $null
-    }
+  if ($remoteBlobShas.ContainsKey($localSha)) {
+    $blobSha = $localSha
   }
 
   if (-not $blobSha) {
@@ -230,6 +233,7 @@ for ($attempt = 0; $attempt -lt 40; $attempt++) {
 
 Write-Host "仓库地址：$repoUrl" -ForegroundColor Green
 Write-Host "GitHub Pages：$pagesUrl" -ForegroundColor Green
+
 
 
 

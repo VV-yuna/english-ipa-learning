@@ -67,7 +67,7 @@
       return;
     }
     if (result.source === 'speech-failed' || result.source === 'unavailable') {
-      showToast('当前设备无法播放该发音，请检查系统语音和音量设置。', 'warning');
+      showToast('例词音频暂时不可用，请重试；上方音素按钮不受影响。', 'warning');
     }
   }
 
@@ -147,7 +147,7 @@
       : '美音常用符号为 /' + escapeHtml(item.us) + '/，请结合例词观察实际变化。';
 
     return '<div class="detail-page">' +
-      '<div class="phoneme-audio-bank" hidden aria-hidden="true">' +
+      '<div class="phoneme-audio-bank" aria-hidden="true">' +
         '<audio id="phoneme-audio-uk" preload="auto" playsinline src="' + escapeAttribute(item.audio.uk) + '"></audio>' +
         '<audio id="phoneme-audio-us" preload="auto" playsinline src="' + escapeAttribute(item.audio.us) + '"></audio>' +
       '</div>' +
@@ -465,6 +465,8 @@
     route();
   }
 })();
+
+
 
 
 

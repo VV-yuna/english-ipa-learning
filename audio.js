@@ -253,7 +253,16 @@
     return fetchEntries(word).catch(function () { return { uk: '', us: '' }; });
   }
 
+  function configureAudioSession() {
+    try {
+      if (navigator.audioSession) navigator.audioSession.type = 'playback';
+    } catch (error) {
+      // Audio Session API is optional and currently Safari-only.
+    }
+  }
+
   function getAudioContext() {
+    configureAudioSession();
     var AudioContextClass = window.AudioContext || window.webkitAudioContext;
     if (!AudioContextClass) return null;
     if (!audioContext) audioContext = new AudioContextClass();
@@ -332,7 +341,7 @@
     return new Promise(function (resolve) {
       var settled = false;
       var fallbackStarted = false;
-      var timeout = window.setTimeout(function () { finish({ source: 'phoneme-error' }); }, 4000);
+      var timeout = window.setTimeout(function () { finish({ source: 'phoneme-error' }); }, 7000);
       function cleanup() {
         window.clearTimeout(timeout);
         element.removeEventListener('ended', onEnded);
@@ -361,10 +370,13 @@
         runFallback();
       }
       activePhonemeFinish = finish;
+      configureAudioSession();
+      element.setAttribute('playsinline', '');
+      element.setAttribute('webkit-playsinline', '');
       element.addEventListener('ended', onEnded);
       element.addEventListener('error', onError, { once: true });
-      element.pause();
-      element.currentTime = 0;
+      try { element.pause(); } catch (error) { /* no-op */ }
+      try { element.currentTime = 0; } catch (error) { /* no-op */ }
       element.muted = false;
       element.volume = 1;
       var playPromise;
@@ -422,6 +434,7 @@
     languageFor: languageFor
   };
 })();
+
 
 
 
