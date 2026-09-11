@@ -654,6 +654,10 @@ p {
   gap: 14px;
 }
 
+.accent-grid-single {
+  grid-template-columns: minmax(0, 560px);
+}
+
 .accent-card {
   padding: 20px;
   border: 1px solid var(--line);
@@ -1398,6 +1402,7 @@ button:disabled {
     transition-duration: 0.01ms !important;
   }
 }
+
 
 
 

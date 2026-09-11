@@ -1,8 +1,16 @@
 # Third-party notices
 
-## Human IPA recordings
+## University of Iowa Sounds of Speech
 
-The isolated phoneme audio files in `assets/audio/human/` are derived from the public IPA Chart recordings:
+The 24 English consonant demonstrations are linked directly to the University of Iowa Sounds of Speech independent `sound.mp4` demonstrations:
+
+- Source: <https://soundsofspeech.uiowa.edu/>
+- Purpose: isolated English consonant demonstrations and shared IPA consonant sounds
+- Delivery: direct reference to the University of Iowa media files; no word segment is cut
+
+## Human IPA vowel recordings
+
+The vowel and human-composite files in `assets/audio/human/` are derived from the public IPA Chart recordings:
 
 - Source: <https://www.ipachart.com/>
 - Reference and individual licences: <https://commons.wikimedia.org/wiki/General_phonetics>
@@ -22,3 +30,4 @@ Example word audio is requested at runtime from Kingsoft Iciba:
 ## Articulation diagrams
 
 All SVG diagrams in `assets/diagrams/` are original diagrams created for this project from general articulatory-phonetics reference material.
+

@@ -172,7 +172,9 @@
           '<div class="anchor-line">跟读锚定词：<strong>' + escapeHtml(item.anchor) + '</strong> · 可帮助稳定判断目标音</div></div>' +
       '</section>' +
       '<section class="panel" aria-labelledby="accent-heading"><div class="panel-heading"><div><h2 id="accent-heading">英音与美音</h2><p>选择跟读口音，或播放真人录音；标注“共用”的音素两版相同。</p></div></div>' +
-        '<div class="accent-grid">' + accentCardHtml(item, 'uk') + accentCardHtml(item, 'us') + '</div></section>' +
+        '<div class="accent-grid' + (item.audio.shared ? ' accent-grid-single' : '') + '">' +
+          (item.audio.shared ? sharedAudioCardHtml(item) : accentCardHtml(item, 'uk') + accentCardHtml(item, 'us')) +
+        '</div></section>' +
       '<section class="panel" aria-labelledby="examples-heading"><div class="panel-heading"><div><h2 id="examples-heading">5 个单词示例</h2>' +
         '<p>单词使用深蓝色显示，每个例词都可分别播放英音和美音。</p></div></div>' +
         '<div class="example-list">' + item.examples.map(exampleHtml).join('') + '</div>' +
@@ -186,6 +188,20 @@
         return '<audio id="word-audio-' + index + '-' + accent + '" preload="none" playsinline></audio>';
       }).join('');
     }).join('') + '</div>';
+  }
+
+  function sharedAudioCardHtml(item) {
+    var isComposite = item.audio.kind === 'human-composite';
+    var isHumanWord = item.audio.kind === 'human-word';
+    var description = isHumanWord
+      ? '该教学连缀没有独立单音录音，使用完整真人例词示范，不截取、不拼接。'
+      : (isComposite ? '由公开真人单音录制的组合音；英音和美音共用。' : '爱荷华大学 Sounds of Speech 独立真人音素示范；英音和美音相同。');
+    var buttonText = isHumanWord ? '播放真人例词：' + item.audio.label : '播放真人发音';
+    return '<article class="accent-card is-selected shared-accent-card" data-accent-card="shared">' +
+      '<div class="accent-card-top"><span class="accent-name">真人发音</span><span class="accent-symbol">英/美相同</span></div>' +
+      '<p>' + description + '</p><div class="record-controls">' +
+        '<button class="primary-button" type="button" data-play-phoneme="uk" data-phoneme-id="' + escapeAttribute(item.id) + '">' + speakerIcon() + buttonText + '</button>' +
+      '</div><div class="demo-note">' + (isHumanWord ? '完整真人例词' : (isComposite ? '真人录音组合' : '官方独立真人音素')) + '</div></article>';
   }
 
   function accentCardHtml(item, accent) {
@@ -218,9 +234,10 @@
     var recognitionHint = window.IPARecorder.isRecognitionSupported()
       ? '录音时会尝试在线语音识别；不可用时会自动改为录音质量评分。'
       : '当前浏览器不支持英文语音识别，将使用录音质量评分。';
+    var audioLabel = item.audio.shared ? '真人发音（英/美共用）' : accentLabel(selectedAccent);
     return '<section class="panel" aria-labelledby="practice-heading"><div class="panel-heading"><div><h2 id="practice-heading">跟读练习</h2>' +
       '<p>先听孤立音素，再录音朗读锚定例词；录音只保存在当前设备。</p></div></div>' +
-      '<p class="practice-copy">当前目标：朗读 <strong id="practice-word">' + escapeHtml(item.anchor) + '</strong>，用 <strong id="practice-accent">' + accentLabel(selectedAccent) + '</strong> 发音。' + recognitionHint + '</p>' +
+      '<p class="practice-copy">当前目标：朗读 <strong id="practice-word">' + escapeHtml(item.anchor) + '</strong>，使用 <strong id="practice-accent">' + escapeHtml(audioLabel) + '</strong>。' + recognitionHint + '</p>' +
       '<div class="practice-shell"><div class="record-zone"><div class="record-controls">' +
         '<button class="primary-button record-button" type="button" id="follow-button">' + micIcon() + '开始跟读</button>' +
         '<button class="secondary-button stop-button" type="button" id="stop-button">' + stopIcon() + '停止录音</button>' +
@@ -281,8 +298,9 @@
         selectButton.textContent = selected ? '当前跟读口音' : '选择' + accentLabel(accent);
       }
     });
+    var currentItem = byId[getRouteId()];
     var label = document.getElementById('practice-accent');
-    if (label) label.textContent = accentLabel(selectedAccent);
+    if (label) label.textContent = currentItem && currentItem.audio && currentItem.audio.shared ? '真人发音（英/美共用）' : accentLabel(selectedAccent);
   }
 
   function setRecordingUi(mode) {
@@ -361,7 +379,7 @@
 
     var accent = selectedAccent;
     setRecordingUi('preparing');
-    setStatus('正在播放' + accentLabel(accent) + '音素 /' + item.symbol + '/……', false);
+    setStatus('正在播放' + (item.audio.shared ? '真人' : accentLabel(accent)) + '音素 /' + item.symbol + '/……', false);
     setLevel(0.04);
     var resultZone = document.getElementById('result-zone');
     if (resultZone) resultZone.innerHTML = '<div class="result-placeholder"><strong>···</strong><p>正在准备录音。</p></div>';
@@ -494,6 +512,11 @@
     route();
   }
 })();
+
+
+
+
+
 
 
 

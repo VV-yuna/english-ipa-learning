@@ -329,7 +329,9 @@
     var item = phonemeRecord(id);
     var context = getAudioContext();
     if (!item || !context) return Promise.resolve(null);
-    var url = new URL(item.audio[normalizedAccent], document.baseURI).href;
+    var source = item.audio[normalizedAccent];
+    if (/^https?:/i.test(source)) return Promise.resolve(null);
+    var url = new URL(source, document.baseURI).href;
     var load = fetch(url).then(function (response) {
       if (!response.ok) throw new Error('Audio response: ' + response.status);
       return response.arrayBuffer();
@@ -487,6 +489,7 @@
     unlock: unlock
   };
 })();
+
 
 
 

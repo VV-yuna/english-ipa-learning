@@ -51,6 +51,7 @@ let shortest = Infinity;
 let longest = 0;
 let totalAudioBytes = 0;
 let compositeCount = 0;
+let fullWordCount = 0;
 
 data.forEach((item) => {
   const audio = item.audio;
@@ -58,12 +59,21 @@ data.forEach((item) => {
     errors.push(item.id + ': missing accent audio paths');
   } else {
     if (!audio.credit || !audio.sourceUrl || !audio.license) errors.push(item.id + ': incomplete human audio provenance');
-    if (audio.kind !== 'human' && audio.kind !== 'human-composite') errors.push(item.id + ': invalid human audio kind');
+    if (!['human', 'human-composite', 'human-word'].includes(audio.kind)) errors.push(item.id + ': invalid human audio kind');
     if (audio.kind === 'human-composite') compositeCount += 1;
+    if (audio.kind === 'human-word') fullWordCount += 1;
     ['uk', 'us'].forEach((accent) => {
-      const filePath = checkFile(audio[accent]);
-      if (!filePath || checkedAudio.has(audio[accent])) return;
-      checkedAudio.add(audio[accent]);
+      const audioPath = audio[accent];
+      if (!audioPath || checkedAudio.has(audioPath)) return;
+      checkedAudio.add(audioPath);
+      if (/^https:\/\//.test(audioPath)) {
+        if (!/^https:\/\/(soundsofspeech\.uiowa\.edu|res\.iciba\.com)\//.test(audioPath)) {
+          errors.push(item.id + ': untrusted remote audio host');
+        }
+        return;
+      }
+      const filePath = checkFile(audioPath);
+      if (!filePath) return;
       totalAudioBytes += fs.statSync(filePath).size;
       const duration = wavDuration(filePath);
       shortest = Math.min(shortest, duration);
@@ -92,6 +102,9 @@ data.forEach((item) => {
 console.log(JSON.stringify({
   phonemes: data.length,
   uniqueHumanAudioFiles: checkedAudio.size,
+  localVowelAndCompositeFiles: Array.from(checkedAudio).filter((value) => !/^https:/.test(value)).length,
+  remoteOfficialConsonantFiles: Array.from(checkedAudio).filter((value) => /soundsofspeech\.uiowa\.edu/.test(value)).length,
+  fullWordTeachingFiles: fullWordCount,
   compositeFiles: compositeCount,
   diagrams: data.length,
   audioSizeMiB: Number((totalAudioBytes / 1024 / 1024).toFixed(2)),
@@ -101,3 +114,4 @@ console.log(JSON.stringify({
 }, null, 2));
 
 if (errors.length) process.exit(1);
+

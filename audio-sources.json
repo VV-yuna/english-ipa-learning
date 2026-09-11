@@ -107,222 +107,6 @@
     "sourceUrl": "https://www.ipachart.com/wav/Mid-central_vowel.wav",
     "license": "Wikimedia Commons free/copyleft recording; see source URL"
   },
-  "p": {
-    "uk": "assets/audio/human/p.wav",
-    "us": "assets/audio/human/p.wav",
-    "shared": true,
-    "kind": "human",
-    "credit": "IPA Chart / Wikimedia Commons human recordings (Peter Isotalo, Denelson83, UCLA Phonetics Lab Archive 2003, Halibutt, Pmx, Octane)",
-    "sourceUrl": "https://www.ipachart.com/wav/Voiceless_bilabial_plosive.wav",
-    "license": "Wikimedia Commons free/copyleft recording; see source URL"
-  },
-  "b": {
-    "uk": "assets/audio/human/b.wav",
-    "us": "assets/audio/human/b.wav",
-    "shared": true,
-    "kind": "human",
-    "credit": "IPA Chart / Wikimedia Commons human recordings (Peter Isotalo, Denelson83, UCLA Phonetics Lab Archive 2003, Halibutt, Pmx, Octane)",
-    "sourceUrl": "https://www.ipachart.com/wav/Voiced_bilabial_plosive.wav",
-    "license": "Wikimedia Commons free/copyleft recording; see source URL"
-  },
-  "t": {
-    "uk": "assets/audio/human/t.wav",
-    "us": "assets/audio/human/t.wav",
-    "shared": true,
-    "kind": "human",
-    "credit": "IPA Chart / Wikimedia Commons human recordings (Peter Isotalo, Denelson83, UCLA Phonetics Lab Archive 2003, Halibutt, Pmx, Octane)",
-    "sourceUrl": "https://www.ipachart.com/wav/Voiceless_alveolar_plosive.wav",
-    "license": "Wikimedia Commons free/copyleft recording; see source URL"
-  },
-  "d": {
-    "uk": "assets/audio/human/d.wav",
-    "us": "assets/audio/human/d.wav",
-    "shared": true,
-    "kind": "human",
-    "credit": "IPA Chart / Wikimedia Commons human recordings (Peter Isotalo, Denelson83, UCLA Phonetics Lab Archive 2003, Halibutt, Pmx, Octane)",
-    "sourceUrl": "https://www.ipachart.com/wav/Voiced_alveolar_plosive.wav",
-    "license": "Wikimedia Commons free/copyleft recording; see source URL"
-  },
-  "k": {
-    "uk": "assets/audio/human/k.wav",
-    "us": "assets/audio/human/k.wav",
-    "shared": true,
-    "kind": "human",
-    "credit": "IPA Chart / Wikimedia Commons human recordings (Peter Isotalo, Denelson83, UCLA Phonetics Lab Archive 2003, Halibutt, Pmx, Octane)",
-    "sourceUrl": "https://www.ipachart.com/wav/Voiceless_velar_plosive.wav",
-    "license": "Wikimedia Commons free/copyleft recording; see source URL"
-  },
-  "g": {
-    "uk": "assets/audio/human/g.wav",
-    "us": "assets/audio/human/g.wav",
-    "shared": true,
-    "kind": "human",
-    "credit": "IPA Chart / Wikimedia Commons human recordings (Peter Isotalo, Denelson83, UCLA Phonetics Lab Archive 2003, Halibutt, Pmx, Octane)",
-    "sourceUrl": "https://www.ipachart.com/wav/Voiced_velar_plosive.wav",
-    "license": "Wikimedia Commons free/copyleft recording; see source URL"
-  },
-  "f": {
-    "uk": "assets/audio/human/f.wav",
-    "us": "assets/audio/human/f.wav",
-    "shared": true,
-    "kind": "human",
-    "credit": "IPA Chart / Wikimedia Commons human recordings (Peter Isotalo, Denelson83, UCLA Phonetics Lab Archive 2003, Halibutt, Pmx, Octane)",
-    "sourceUrl": "https://www.ipachart.com/wav/Voiceless_labiodental_fricative.wav",
-    "license": "Wikimedia Commons free/copyleft recording; see source URL"
-  },
-  "v": {
-    "uk": "assets/audio/human/v.wav",
-    "us": "assets/audio/human/v.wav",
-    "shared": true,
-    "kind": "human",
-    "credit": "IPA Chart / Wikimedia Commons human recordings (Peter Isotalo, Denelson83, UCLA Phonetics Lab Archive 2003, Halibutt, Pmx, Octane)",
-    "sourceUrl": "https://www.ipachart.com/wav/Voiced_labiodental_fricative.wav",
-    "license": "Wikimedia Commons free/copyleft recording; see source URL"
-  },
-  "th-voiceless": {
-    "uk": "assets/audio/human/th-voiceless.wav",
-    "us": "assets/audio/human/th-voiceless.wav",
-    "shared": true,
-    "kind": "human",
-    "credit": "IPA Chart / Wikimedia Commons human recordings (Peter Isotalo, Denelson83, UCLA Phonetics Lab Archive 2003, Halibutt, Pmx, Octane)",
-    "sourceUrl": "https://www.ipachart.com/wav/Voiceless_dental_fricative.wav",
-    "license": "Wikimedia Commons free/copyleft recording; see source URL"
-  },
-  "th-voiced": {
-    "uk": "assets/audio/human/th-voiced.wav",
-    "us": "assets/audio/human/th-voiced.wav",
-    "shared": true,
-    "kind": "human",
-    "credit": "IPA Chart / Wikimedia Commons human recordings (Peter Isotalo, Denelson83, UCLA Phonetics Lab Archive 2003, Halibutt, Pmx, Octane)",
-    "sourceUrl": "https://www.ipachart.com/wav/Voiced_dental_fricative.wav",
-    "license": "Wikimedia Commons free/copyleft recording; see source URL"
-  },
-  "s": {
-    "uk": "assets/audio/human/s.wav",
-    "us": "assets/audio/human/s.wav",
-    "shared": true,
-    "kind": "human",
-    "credit": "IPA Chart / Wikimedia Commons human recordings (Peter Isotalo, Denelson83, UCLA Phonetics Lab Archive 2003, Halibutt, Pmx, Octane)",
-    "sourceUrl": "https://www.ipachart.com/wav/Voiceless_alveolar_fricative.wav",
-    "license": "Wikimedia Commons free/copyleft recording; see source URL"
-  },
-  "z": {
-    "uk": "assets/audio/human/z.wav",
-    "us": "assets/audio/human/z.wav",
-    "shared": true,
-    "kind": "human",
-    "credit": "IPA Chart / Wikimedia Commons human recordings (Peter Isotalo, Denelson83, UCLA Phonetics Lab Archive 2003, Halibutt, Pmx, Octane)",
-    "sourceUrl": "https://www.ipachart.com/wav/Voiced_alveolar_fricative.wav",
-    "license": "Wikimedia Commons free/copyleft recording; see source URL"
-  },
-  "sh": {
-    "uk": "assets/audio/human/sh.wav",
-    "us": "assets/audio/human/sh.wav",
-    "shared": true,
-    "kind": "human",
-    "credit": "IPA Chart / Wikimedia Commons human recordings (Peter Isotalo, Denelson83, UCLA Phonetics Lab Archive 2003, Halibutt, Pmx, Octane)",
-    "sourceUrl": "https://www.ipachart.com/wav/Voiceless_postalveolar_fricative.wav",
-    "license": "Wikimedia Commons free/copyleft recording; see source URL"
-  },
-  "zh": {
-    "uk": "assets/audio/human/zh.wav",
-    "us": "assets/audio/human/zh.wav",
-    "shared": true,
-    "kind": "human",
-    "credit": "IPA Chart / Wikimedia Commons human recordings (Peter Isotalo, Denelson83, UCLA Phonetics Lab Archive 2003, Halibutt, Pmx, Octane)",
-    "sourceUrl": "https://www.ipachart.com/wav/Voiced_postalveolar_fricative.wav",
-    "license": "Wikimedia Commons free/copyleft recording; see source URL"
-  },
-  "h": {
-    "uk": "assets/audio/human/h.wav",
-    "us": "assets/audio/human/h.wav",
-    "shared": true,
-    "kind": "human",
-    "credit": "IPA Chart / Wikimedia Commons human recordings (Peter Isotalo, Denelson83, UCLA Phonetics Lab Archive 2003, Halibutt, Pmx, Octane)",
-    "sourceUrl": "https://www.ipachart.com/wav/Voiceless_glottal_fricative.wav",
-    "license": "Wikimedia Commons free/copyleft recording; see source URL"
-  },
-  "ch": {
-    "uk": "assets/audio/human/ch.wav",
-    "us": "assets/audio/human/ch.wav",
-    "shared": true,
-    "kind": "human",
-    "credit": "IPA Chart / Wikimedia Commons human recordings (Peter Isotalo, Denelson83, UCLA Phonetics Lab Archive 2003, Halibutt, Pmx, Octane)",
-    "sourceUrl": "https://www.ipachart.com/wav/Voiceless_palato-alveolar_affricate.wav",
-    "license": "Wikimedia Commons free/copyleft recording; see source URL"
-  },
-  "j-sound": {
-    "uk": "assets/audio/human/j-sound.wav",
-    "us": "assets/audio/human/j-sound.wav",
-    "shared": true,
-    "kind": "human",
-    "credit": "IPA Chart / Wikimedia Commons human recordings (Peter Isotalo, Denelson83, UCLA Phonetics Lab Archive 2003, Halibutt, Pmx, Octane)",
-    "sourceUrl": "https://www.ipachart.com/wav/Voiced_postalveolar_affricate.wav",
-    "license": "Wikimedia Commons free/copyleft recording; see source URL"
-  },
-  "m": {
-    "uk": "assets/audio/human/m.wav",
-    "us": "assets/audio/human/m.wav",
-    "shared": true,
-    "kind": "human",
-    "credit": "IPA Chart / Wikimedia Commons human recordings (Peter Isotalo, Denelson83, UCLA Phonetics Lab Archive 2003, Halibutt, Pmx, Octane)",
-    "sourceUrl": "https://www.ipachart.com/wav/Bilabial_nasal.wav",
-    "license": "Wikimedia Commons free/copyleft recording; see source URL"
-  },
-  "n": {
-    "uk": "assets/audio/human/n.wav",
-    "us": "assets/audio/human/n.wav",
-    "shared": true,
-    "kind": "human",
-    "credit": "IPA Chart / Wikimedia Commons human recordings (Peter Isotalo, Denelson83, UCLA Phonetics Lab Archive 2003, Halibutt, Pmx, Octane)",
-    "sourceUrl": "https://www.ipachart.com/wav/Alveolar_nasal.wav",
-    "license": "Wikimedia Commons free/copyleft recording; see source URL"
-  },
-  "ng": {
-    "uk": "assets/audio/human/ng.wav",
-    "us": "assets/audio/human/ng.wav",
-    "shared": true,
-    "kind": "human",
-    "credit": "IPA Chart / Wikimedia Commons human recordings (Peter Isotalo, Denelson83, UCLA Phonetics Lab Archive 2003, Halibutt, Pmx, Octane)",
-    "sourceUrl": "https://www.ipachart.com/wav/Velar_nasal.wav",
-    "license": "Wikimedia Commons free/copyleft recording; see source URL"
-  },
-  "l": {
-    "uk": "assets/audio/human/l.wav",
-    "us": "assets/audio/human/l.wav",
-    "shared": true,
-    "kind": "human",
-    "credit": "IPA Chart / Wikimedia Commons human recordings (Peter Isotalo, Denelson83, UCLA Phonetics Lab Archive 2003, Halibutt, Pmx, Octane)",
-    "sourceUrl": "https://www.ipachart.com/wav/Alveolar_lateral_approximant.wav",
-    "license": "Wikimedia Commons free/copyleft recording; see source URL"
-  },
-  "r": {
-    "uk": "assets/audio/human/r.wav",
-    "us": "assets/audio/human/r.wav",
-    "shared": true,
-    "kind": "human",
-    "credit": "IPA Chart / Wikimedia Commons human recordings (Peter Isotalo, Denelson83, UCLA Phonetics Lab Archive 2003, Halibutt, Pmx, Octane)",
-    "sourceUrl": "https://www.ipachart.com/wav/Alveolar_approximant.wav",
-    "license": "Wikimedia Commons free/copyleft recording; see source URL"
-  },
-  "y": {
-    "uk": "assets/audio/human/y.wav",
-    "us": "assets/audio/human/y.wav",
-    "shared": true,
-    "kind": "human",
-    "credit": "IPA Chart / Wikimedia Commons human recordings (Peter Isotalo, Denelson83, UCLA Phonetics Lab Archive 2003, Halibutt, Pmx, Octane)",
-    "sourceUrl": "https://www.ipachart.com/wav/Palatal_approximant.wav",
-    "license": "Wikimedia Commons free/copyleft recording; see source URL"
-  },
-  "w": {
-    "uk": "assets/audio/human/w.wav",
-    "us": "assets/audio/human/w.wav",
-    "shared": true,
-    "kind": "human",
-    "credit": "IPA Chart / Wikimedia Commons human recordings (Peter Isotalo, Denelson83, UCLA Phonetics Lab Archive 2003, Halibutt, Pmx, Octane)",
-    "sourceUrl": "https://www.ipachart.com/wav/Voiced_labio-velar_approximant.wav",
-    "license": "Wikimedia Commons free/copyleft recording; see source URL"
-  },
   "ei": {
     "uk": "assets/audio/human/ei.wav",
     "us": "assets/audio/human/ei.wav",
@@ -451,68 +235,272 @@
       "schwa"
     ]
   },
-  "tr": {
-    "uk": "assets/audio/human/tr.wav",
-    "us": "assets/audio/human/tr.wav",
+  "p": {
+    "uk": "https://soundsofspeech.uiowa.edu/assets/phonemes/p-sound/examples/sound.mp4",
+    "us": "https://soundsofspeech.uiowa.edu/assets/phonemes/p-sound/examples/sound.mp4",
     "shared": true,
-    "kind": "human-composite",
-    "credit": "Human recording composite from IPA Chart / Wikimedia Commons recordings",
+    "kind": "human",
+    "credit": "Sounds of Speech, University of Iowa - independent phoneme demonstration",
+    "sourceUrl": "https://soundsofspeech.uiowa.edu/assets/phonemes/p-sound/examples/sound.mp4",
+    "license": "Official educational demonstration linked directly from the University of Iowa"
+  },
+  "b": {
+    "uk": "https://soundsofspeech.uiowa.edu/assets/phonemes/b-sound/examples/sound.mp4",
+    "us": "https://soundsofspeech.uiowa.edu/assets/phonemes/b-sound/examples/sound.mp4",
+    "shared": true,
+    "kind": "human",
+    "credit": "Sounds of Speech, University of Iowa - independent phoneme demonstration",
+    "sourceUrl": "https://soundsofspeech.uiowa.edu/assets/phonemes/b-sound/examples/sound.mp4",
+    "license": "Official educational demonstration linked directly from the University of Iowa"
+  },
+  "t": {
+    "uk": "https://soundsofspeech.uiowa.edu/assets/phonemes/t-sound/examples/sound.mp4",
+    "us": "https://soundsofspeech.uiowa.edu/assets/phonemes/t-sound/examples/sound.mp4",
+    "shared": true,
+    "kind": "human",
+    "credit": "Sounds of Speech, University of Iowa - independent phoneme demonstration",
+    "sourceUrl": "https://soundsofspeech.uiowa.edu/assets/phonemes/t-sound/examples/sound.mp4",
+    "license": "Official educational demonstration linked directly from the University of Iowa"
+  },
+  "d": {
+    "uk": "https://soundsofspeech.uiowa.edu/assets/phonemes/d-sound/examples/sound.mp4",
+    "us": "https://soundsofspeech.uiowa.edu/assets/phonemes/d-sound/examples/sound.mp4",
+    "shared": true,
+    "kind": "human",
+    "credit": "Sounds of Speech, University of Iowa - independent phoneme demonstration",
+    "sourceUrl": "https://soundsofspeech.uiowa.edu/assets/phonemes/d-sound/examples/sound.mp4",
+    "license": "Official educational demonstration linked directly from the University of Iowa"
+  },
+  "k": {
+    "uk": "https://soundsofspeech.uiowa.edu/assets/phonemes/k-sound/examples/sound.mp4",
+    "us": "https://soundsofspeech.uiowa.edu/assets/phonemes/k-sound/examples/sound.mp4",
+    "shared": true,
+    "kind": "human",
+    "credit": "Sounds of Speech, University of Iowa - independent phoneme demonstration",
+    "sourceUrl": "https://soundsofspeech.uiowa.edu/assets/phonemes/k-sound/examples/sound.mp4",
+    "license": "Official educational demonstration linked directly from the University of Iowa"
+  },
+  "g": {
+    "uk": "https://soundsofspeech.uiowa.edu/assets/phonemes/g-sound/examples/sound.mp4",
+    "us": "https://soundsofspeech.uiowa.edu/assets/phonemes/g-sound/examples/sound.mp4",
+    "shared": true,
+    "kind": "human",
+    "credit": "Sounds of Speech, University of Iowa - independent phoneme demonstration",
+    "sourceUrl": "https://soundsofspeech.uiowa.edu/assets/phonemes/g-sound/examples/sound.mp4",
+    "license": "Official educational demonstration linked directly from the University of Iowa"
+  },
+  "f": {
+    "uk": "https://soundsofspeech.uiowa.edu/assets/phonemes/f-sound/examples/sound.mp4",
+    "us": "https://soundsofspeech.uiowa.edu/assets/phonemes/f-sound/examples/sound.mp4",
+    "shared": true,
+    "kind": "human",
+    "credit": "Sounds of Speech, University of Iowa - independent phoneme demonstration",
+    "sourceUrl": "https://soundsofspeech.uiowa.edu/assets/phonemes/f-sound/examples/sound.mp4",
+    "license": "Official educational demonstration linked directly from the University of Iowa"
+  },
+  "v": {
+    "uk": "https://soundsofspeech.uiowa.edu/assets/phonemes/v-sound/examples/sound.mp4",
+    "us": "https://soundsofspeech.uiowa.edu/assets/phonemes/v-sound/examples/sound.mp4",
+    "shared": true,
+    "kind": "human",
+    "credit": "Sounds of Speech, University of Iowa - independent phoneme demonstration",
+    "sourceUrl": "https://soundsofspeech.uiowa.edu/assets/phonemes/v-sound/examples/sound.mp4",
+    "license": "Official educational demonstration linked directly from the University of Iowa"
+  },
+  "s": {
+    "uk": "https://soundsofspeech.uiowa.edu/assets/phonemes/s-sound/examples/sound.mp4",
+    "us": "https://soundsofspeech.uiowa.edu/assets/phonemes/s-sound/examples/sound.mp4",
+    "shared": true,
+    "kind": "human",
+    "credit": "Sounds of Speech, University of Iowa - independent phoneme demonstration",
+    "sourceUrl": "https://soundsofspeech.uiowa.edu/assets/phonemes/s-sound/examples/sound.mp4",
+    "license": "Official educational demonstration linked directly from the University of Iowa"
+  },
+  "z": {
+    "uk": "https://soundsofspeech.uiowa.edu/assets/phonemes/z-sound/examples/sound.mp4",
+    "us": "https://soundsofspeech.uiowa.edu/assets/phonemes/z-sound/examples/sound.mp4",
+    "shared": true,
+    "kind": "human",
+    "credit": "Sounds of Speech, University of Iowa - independent phoneme demonstration",
+    "sourceUrl": "https://soundsofspeech.uiowa.edu/assets/phonemes/z-sound/examples/sound.mp4",
+    "license": "Official educational demonstration linked directly from the University of Iowa"
+  },
+  "h": {
+    "uk": "https://soundsofspeech.uiowa.edu/assets/phonemes/h-sound/examples/sound.mp4",
+    "us": "https://soundsofspeech.uiowa.edu/assets/phonemes/h-sound/examples/sound.mp4",
+    "shared": true,
+    "kind": "human",
+    "credit": "Sounds of Speech, University of Iowa - independent phoneme demonstration",
+    "sourceUrl": "https://soundsofspeech.uiowa.edu/assets/phonemes/h-sound/examples/sound.mp4",
+    "license": "Official educational demonstration linked directly from the University of Iowa"
+  },
+  "m": {
+    "uk": "https://soundsofspeech.uiowa.edu/assets/phonemes/m-sound/examples/sound.mp4",
+    "us": "https://soundsofspeech.uiowa.edu/assets/phonemes/m-sound/examples/sound.mp4",
+    "shared": true,
+    "kind": "human",
+    "credit": "Sounds of Speech, University of Iowa - independent phoneme demonstration",
+    "sourceUrl": "https://soundsofspeech.uiowa.edu/assets/phonemes/m-sound/examples/sound.mp4",
+    "license": "Official educational demonstration linked directly from the University of Iowa"
+  },
+  "n": {
+    "uk": "https://soundsofspeech.uiowa.edu/assets/phonemes/n-sound/examples/sound.mp4",
+    "us": "https://soundsofspeech.uiowa.edu/assets/phonemes/n-sound/examples/sound.mp4",
+    "shared": true,
+    "kind": "human",
+    "credit": "Sounds of Speech, University of Iowa - independent phoneme demonstration",
+    "sourceUrl": "https://soundsofspeech.uiowa.edu/assets/phonemes/n-sound/examples/sound.mp4",
+    "license": "Official educational demonstration linked directly from the University of Iowa"
+  },
+  "ng": {
+    "uk": "https://soundsofspeech.uiowa.edu/assets/phonemes/ng-sound/examples/sound.mp4",
+    "us": "https://soundsofspeech.uiowa.edu/assets/phonemes/ng-sound/examples/sound.mp4",
+    "shared": true,
+    "kind": "human",
+    "credit": "Sounds of Speech, University of Iowa - independent phoneme demonstration",
+    "sourceUrl": "https://soundsofspeech.uiowa.edu/assets/phonemes/ng-sound/examples/sound.mp4",
+    "license": "Official educational demonstration linked directly from the University of Iowa"
+  },
+  "l": {
+    "uk": "https://soundsofspeech.uiowa.edu/assets/phonemes/l-sound/examples/sound.mp4",
+    "us": "https://soundsofspeech.uiowa.edu/assets/phonemes/l-sound/examples/sound.mp4",
+    "shared": true,
+    "kind": "human",
+    "credit": "Sounds of Speech, University of Iowa - independent phoneme demonstration",
+    "sourceUrl": "https://soundsofspeech.uiowa.edu/assets/phonemes/l-sound/examples/sound.mp4",
+    "license": "Official educational demonstration linked directly from the University of Iowa"
+  },
+  "r": {
+    "uk": "https://soundsofspeech.uiowa.edu/assets/phonemes/r-sound/examples/sound.mp4",
+    "us": "https://soundsofspeech.uiowa.edu/assets/phonemes/r-sound/examples/sound.mp4",
+    "shared": true,
+    "kind": "human",
+    "credit": "Sounds of Speech, University of Iowa - independent phoneme demonstration",
+    "sourceUrl": "https://soundsofspeech.uiowa.edu/assets/phonemes/r-sound/examples/sound.mp4",
+    "license": "Official educational demonstration linked directly from the University of Iowa"
+  },
+  "th-voiceless": {
+    "uk": "https://soundsofspeech.uiowa.edu/assets/phonemes/es/theta-sound/examples/sound.mp4",
+    "us": "https://soundsofspeech.uiowa.edu/assets/phonemes/es/theta-sound/examples/sound.mp4",
+    "shared": true,
+    "kind": "human",
+    "credit": "Sounds of Speech, University of Iowa - independent phoneme demonstration",
+    "sourceUrl": "https://soundsofspeech.uiowa.edu/assets/phonemes/es/theta-sound/examples/sound.mp4",
+    "license": "Official educational demonstration linked directly from the University of Iowa"
+  },
+  "th-voiced": {
+    "uk": "https://soundsofspeech.uiowa.edu/assets/phonemes/es/eth-low-sound/examples/sound.mp4",
+    "us": "https://soundsofspeech.uiowa.edu/assets/phonemes/es/eth-low-sound/examples/sound.mp4",
+    "shared": true,
+    "kind": "human",
+    "credit": "Sounds of Speech, University of Iowa - independent phoneme demonstration",
+    "sourceUrl": "https://soundsofspeech.uiowa.edu/assets/phonemes/es/eth-low-sound/examples/sound.mp4",
+    "license": "Official educational demonstration linked directly from the University of Iowa"
+  },
+  "sh": {
+    "uk": "https://soundsofspeech.uiowa.edu/assets/phonemes/es/zh1-sound/examples/sound.mp4",
+    "us": "https://soundsofspeech.uiowa.edu/assets/phonemes/es/zh1-sound/examples/sound.mp4",
+    "shared": true,
+    "kind": "human",
+    "credit": "Sounds of Speech, University of Iowa - independent phoneme demonstration",
+    "sourceUrl": "https://soundsofspeech.uiowa.edu/assets/phonemes/es/zh1-sound/examples/sound.mp4",
+    "license": "Official educational demonstration linked directly from the University of Iowa"
+  },
+  "zh": {
+    "uk": "https://soundsofspeech.uiowa.edu/assets/phonemes/es/zh2-sound/examples/sound.mp4",
+    "us": "https://soundsofspeech.uiowa.edu/assets/phonemes/es/zh2-sound/examples/sound.mp4",
+    "shared": true,
+    "kind": "human",
+    "credit": "Sounds of Speech, University of Iowa - independent phoneme demonstration",
+    "sourceUrl": "https://soundsofspeech.uiowa.edu/assets/phonemes/es/zh2-sound/examples/sound.mp4",
+    "license": "Official educational demonstration linked directly from the University of Iowa"
+  },
+  "ch": {
+    "uk": "https://soundsofspeech.uiowa.edu/assets/phonemes/es/ch-sound/examples/sound.mp4",
+    "us": "https://soundsofspeech.uiowa.edu/assets/phonemes/es/ch-sound/examples/sound.mp4",
+    "shared": true,
+    "kind": "human",
+    "credit": "Sounds of Speech, University of Iowa - independent phoneme demonstration",
+    "sourceUrl": "https://soundsofspeech.uiowa.edu/assets/phonemes/es/ch-sound/examples/sound.mp4",
+    "license": "Official educational demonstration linked directly from the University of Iowa"
+  },
+  "j-sound": {
+    "uk": "https://soundsofspeech.uiowa.edu/assets/phonemes/es/jya-sound/examples/sound.mp4",
+    "us": "https://soundsofspeech.uiowa.edu/assets/phonemes/es/jya-sound/examples/sound.mp4",
+    "shared": true,
+    "kind": "human",
+    "credit": "Sounds of Speech, University of Iowa - independent phoneme demonstration",
+    "sourceUrl": "https://soundsofspeech.uiowa.edu/assets/phonemes/es/jya-sound/examples/sound.mp4",
+    "license": "Official educational demonstration linked directly from the University of Iowa"
+  },
+  "y": {
+    "uk": "https://soundsofspeech.uiowa.edu/assets/phonemes/es/yot-sound/examples/sound.mp4",
+    "us": "https://soundsofspeech.uiowa.edu/assets/phonemes/es/yot-sound/examples/sound.mp4",
+    "shared": true,
+    "kind": "human",
+    "credit": "Sounds of Speech, University of Iowa - independent phoneme demonstration",
+    "sourceUrl": "https://soundsofspeech.uiowa.edu/assets/phonemes/es/yot-sound/examples/sound.mp4",
+    "license": "Official educational demonstration linked directly from the University of Iowa"
+  },
+  "w": {
+    "uk": "https://soundsofspeech.uiowa.edu/assets/phonemes/es/w-sound/examples/sound.mp4",
+    "us": "https://soundsofspeech.uiowa.edu/assets/phonemes/es/w-sound/examples/sound.mp4",
+    "shared": true,
+    "kind": "human",
+    "credit": "Sounds of Speech, University of Iowa - independent phoneme demonstration",
+    "sourceUrl": "https://soundsofspeech.uiowa.edu/assets/phonemes/es/w-sound/examples/sound.mp4",
+    "license": "Official educational demonstration linked directly from the University of Iowa"
+  },
+  "tr": {
+    "uk": "https://res.iciba.com/resource/amp3/0/0/c0/af/c0af77cf8294ff93a5cdb2963ca9f038.mp3",
+    "us": "https://res.iciba.com/resource/amp3/1/0/c0/af/c0af77cf8294ff93a5cdb2963ca9f038.mp3",
+    "shared": true,
+    "kind": "human-word",
+    "label": "tree",
+    "credit": "Kingsoft Iciba human dictionary recording",
     "sourceUrl": [
-      "https://www.ipachart.com/wav/Voiceless_alveolar_plosive.wav",
-      "https://www.ipachart.com/wav/Alveolar_approximant.wav"
+      "https://res.iciba.com/resource/amp3/0/0/c0/af/c0af77cf8294ff93a5cdb2963ca9f038.mp3",
+      "https://res.iciba.com/resource/amp3/1/0/c0/af/c0af77cf8294ff93a5cdb2963ca9f038.mp3"
     ],
-    "license": "Wikimedia Commons free/copyleft recording; see source URL",
-    "components": [
-      "t",
-      "r"
-    ]
+    "license": "Used by direct reference from Kingsoft Iciba"
   },
   "dr": {
-    "uk": "assets/audio/human/dr.wav",
-    "us": "assets/audio/human/dr.wav",
+    "uk": "https://res.iciba.com/resource/amp3/0/0/88/12/8812662dcf3e5db0247c0f85909363fc.mp3",
+    "us": "https://res.iciba.com/resource/amp3/1/0/88/12/8812662dcf3e5db0247c0f85909363fc.mp3",
     "shared": true,
-    "kind": "human-composite",
-    "credit": "Human recording composite from IPA Chart / Wikimedia Commons recordings",
+    "kind": "human-word",
+    "label": "dream",
+    "credit": "Kingsoft Iciba human dictionary recording",
     "sourceUrl": [
-      "https://www.ipachart.com/wav/Voiced_alveolar_plosive.wav",
-      "https://www.ipachart.com/wav/Alveolar_approximant.wav"
+      "https://res.iciba.com/resource/amp3/0/0/88/12/8812662dcf3e5db0247c0f85909363fc.mp3",
+      "https://res.iciba.com/resource/amp3/1/0/88/12/8812662dcf3e5db0247c0f85909363fc.mp3"
     ],
-    "license": "Wikimedia Commons free/copyleft recording; see source URL",
-    "components": [
-      "d",
-      "r"
-    ]
+    "license": "Used by direct reference from Kingsoft Iciba"
   },
   "ts": {
-    "uk": "assets/audio/human/ts.wav",
-    "us": "assets/audio/human/ts.wav",
+    "uk": "https://res.iciba.com/resource/amp3/0/0/08/32/0832c1202da8d382318e329a7c133ea0.mp3",
+    "us": "https://res.iciba.com/resource/amp3/1/0/08/32/0832c1202da8d382318e329a7c133ea0.mp3",
     "shared": true,
-    "kind": "human-composite",
-    "credit": "Human recording composite from IPA Chart / Wikimedia Commons recordings",
+    "kind": "human-word",
+    "label": "cats",
+    "credit": "Kingsoft Iciba human dictionary recording",
     "sourceUrl": [
-      "https://www.ipachart.com/wav/Voiceless_alveolar_plosive.wav",
-      "https://www.ipachart.com/wav/Voiceless_alveolar_fricative.wav"
+      "https://res.iciba.com/resource/amp3/0/0/08/32/0832c1202da8d382318e329a7c133ea0.mp3",
+      "https://res.iciba.com/resource/amp3/1/0/08/32/0832c1202da8d382318e329a7c133ea0.mp3"
     ],
-    "license": "Wikimedia Commons free/copyleft recording; see source URL",
-    "components": [
-      "t",
-      "s"
-    ]
+    "license": "Used by direct reference from Kingsoft Iciba"
   },
   "dz": {
-    "uk": "assets/audio/human/dz.wav",
-    "us": "assets/audio/human/dz.wav",
+    "uk": "https://res.iciba.com/resource/amp3/0/0/de/d1/ded15c530f0d1d5fb402905c8774102c.mp3",
+    "us": "https://res.iciba.com/resource/amp3/1/0/de/d1/ded15c530f0d1d5fb402905c8774102c.mp3",
     "shared": true,
-    "kind": "human-composite",
-    "credit": "Human recording composite from IPA Chart / Wikimedia Commons recordings",
+    "kind": "human-word",
+    "label": "beds",
+    "credit": "Kingsoft Iciba human dictionary recording",
     "sourceUrl": [
-      "https://www.ipachart.com/wav/Voiced_alveolar_plosive.wav",
-      "https://www.ipachart.com/wav/Voiced_alveolar_fricative.wav"
+      "https://res.iciba.com/resource/amp3/0/0/de/d1/ded15c530f0d1d5fb402905c8774102c.mp3",
+      "https://res.iciba.com/resource/amp3/1/0/de/d1/ded15c530f0d1d5fb402905c8774102c.mp3"
     ],
-    "license": "Wikimedia Commons free/copyleft recording; see source URL",
-    "components": [
-      "d",
-      "z"
-    ]
+    "license": "Used by direct reference from Kingsoft Iciba"
   }
 }
