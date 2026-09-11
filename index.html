@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="简洁清晰的英语国际音标学习工具，支持英音美音示范、例词发音与跟读评分。">
+  <title>英语音标学习</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">跳到主要内容</a>
+
+  <header class="site-header" id="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#/" aria-label="返回英语音标学习首页">
+        <span class="brand-mark" aria-hidden="true">/ə/</span>
+        <span>
+          <strong>英语音标学习</strong>
+          <small>听 · 读 · 练</small>
+        </span>
+      </a>
+      <span class="header-badge">48 个国际音标</span>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <div id="app-view" class="shell" aria-live="polite"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <p>发音示范来自在线词典，缺失时使用浏览器语音合成；录音仅在当前设备处理，不会上传。</p>
+      <p>建议使用 Chrome 或 Edge，并通过 HTTPS 或 localhost 打开录音功能。</p>
+    </div>
+  </footer>
+
+  <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+  <noscript>
+    <div class="noscript-message">此页面需要启用 JavaScript 才能显示音标和录音功能。</div>
+  </noscript>
+
+  <script src="data.js"></script>
+  <script src="audio.js"></script>
+  <script src="recorder.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
