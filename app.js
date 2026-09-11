@@ -10,6 +10,7 @@
   var activeRecorder = null;
   var selectedAccent = 'uk';
   var routeToken = 0;
+  var initialRouteHandled = false;
 
   function escapeHtml(value) {
     return String(value == null ? '' : value)
@@ -57,17 +58,8 @@
       showToast('音素音频未能播放，请检查媒体音量或手机静音开关后重试。', 'warning');
       return;
     }
-    if (result.source === 'speech') {
-      var reason = result.reason === 'offline'
-        ? '当前网络不可用，'
-        : result.reason === 'no-dictionary-audio'
-          ? '词典中没有找到对应真人音频，'
-          : '真人音频暂时不可用，';
-      showToast(reason + '已使用浏览器' + accentLabel(result.accent) + '语音。', 'warning');
-      return;
-    }
-    if (result.source === 'speech-failed' || result.source === 'unavailable') {
-      showToast('例词音频暂时不可用，请重试；上方音素按钮不受影响。', 'warning');
+    if (result.source === 'no-human-audio' || result.source === 'unavailable') {
+      showToast('真人音频暂时不可用，请检查网络后重试；网站不会改用 AI 发音。', 'warning');
     }
   }
 
@@ -179,12 +171,12 @@
           '<p>' + accentSummary + '</p><div class="tip-box"><strong>口型提示</strong><span>' + escapeHtml(item.tip) + '</span></div>' +
           '<div class="anchor-line">跟读锚定词：<strong>' + escapeHtml(item.anchor) + '</strong> · 可帮助稳定判断目标音</div></div>' +
       '</section>' +
-      '<section class="panel" aria-labelledby="accent-heading"><div class="panel-heading"><div><h2 id="accent-heading">英音与美音</h2><p>点击卡片选择跟读口音，或单独播放示范。</p></div></div>' +
+      '<section class="panel" aria-labelledby="accent-heading"><div class="panel-heading"><div><h2 id="accent-heading">英音与美音</h2><p>选择跟读口音，或播放真人录音；标注“共用”的音素两版相同。</p></div></div>' +
         '<div class="accent-grid">' + accentCardHtml(item, 'uk') + accentCardHtml(item, 'us') + '</div></section>' +
       '<section class="panel" aria-labelledby="examples-heading"><div class="panel-heading"><div><h2 id="examples-heading">5 个单词示例</h2>' +
         '<p>单词使用深蓝色显示，每个例词都可分别播放英音和美音。</p></div></div>' +
         '<div class="example-list">' + item.examples.map(exampleHtml).join('') + '</div>' +
-        '<div class="speech-note">' + speakerIcon() + '<span>音素音频已内置于网站；例词优先使用金山词霸/爱词霸在线发音，资源缺失或网络不可用时自动切换为浏览器语音合成。</span></div></section>' +
+        '<div class="speech-note">' + speakerIcon() + '<span>音素使用公开许可真人录音，不使用 AI 发音；例词使用金山词霸/爱词霸真人词典音频。</span></div></section>' +
       practiceHtml(item) + '</div>';
   }
 
@@ -199,15 +191,17 @@
   function accentCardHtml(item, accent) {
     var selected = selectedAccent === accent;
     var symbol = accent === 'us' ? item.us : item.uk;
-    var description = accent === 'us'
-      ? '播放美式单音素，重点听卷舌音和元音差异。'
-      : '播放英式单音素，重点听长元音和非重读音节。';
+    var shared = item.audio && item.audio.shared;
+    var isComposite = item.audio && item.audio.kind === 'human-composite';
+    var description = shared
+      ? (isComposite ? '真人录音组合；英音和美音共用同一标准录音。' : '公开许可真人单音；英音和美音共用同一标准录音。')
+      : (accent === 'us' ? '播放美式真人单音。' : '播放英式真人单音。');
     return '<article class="accent-card' + (selected ? ' is-selected' : '') + '" data-accent-card="' + accent + '">' +
       '<div class="accent-card-top"><span class="accent-name">' + accentLabel(accent) + '</span><span class="accent-symbol">/' + escapeHtml(symbol) + '/</span></div>' +
       '<p>' + description + '</p><div class="record-controls">' +
         '<button class="secondary-button" type="button" data-select-accent="' + accent + '" aria-pressed="' + String(selected) + '">' + (selected ? '当前跟读口音' : '选择' + accentLabel(accent)) + '</button>' +
-        '<button class="primary-button" type="button" data-play-phoneme="' + accent + '" data-phoneme-id="' + escapeAttribute(item.id) + '">' + speakerIcon() + '播放' + accentLabel(accent) + '音素</button>' +
-      '</div><div class="demo-note">孤立音素 · 不播放示例单词</div></article>';
+        '<button class="primary-button" type="button" data-play-phoneme="' + accent + '" data-phoneme-id="' + escapeAttribute(item.id) + '">' + speakerIcon() + '播放' + accentLabel(accent) + '真人音素</button>' +
+      '</div><div class="demo-note">' + (isComposite ? '真人录音组合' : '真人单音') + (shared ? ' · 英/美共用' : '') + '</div></article>';
   }
 
   function exampleHtml(example, index) {
@@ -463,6 +457,15 @@
   }
 
   function route() {
+    if (!initialRouteHandled) {
+      initialRouteHandled = true;
+      if (getRouteId()) {
+        history.replaceState(null, '', location.pathname + location.search + '#/');
+      }
+      renderHome();
+      return;
+    }
+
     var id = getRouteId();
     if (id) {
       renderDetail(id);
@@ -491,6 +494,10 @@
     route();
   }
 })();
+
+
+
+
 
 
 

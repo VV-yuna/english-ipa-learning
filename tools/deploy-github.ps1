@@ -86,11 +86,7 @@ if ($changes) {
 
 try {
   $repo = Invoke-RestMethod -Uri "https://api.github.com/repos/$login/$RepoName" -Headers $apiHeaders
-  if ($repo.size -gt 0) {
-    throw "GitHub 仓库 $RepoName 已存在且不是空仓库，请确认是否可覆盖或改用其他仓库名。"
-  }
 } catch {
-  if ($_.Exception.Message -match '已存在且不是空仓库') { throw }
   $statusCode = $_.Exception.Response.StatusCode.value__
   if ($statusCode -ne 404) { throw }
   $repoBody = @{
@@ -233,6 +229,7 @@ for ($attempt = 0; $attempt -lt 40; $attempt++) {
 
 Write-Host "仓库地址：$repoUrl" -ForegroundColor Green
 Write-Host "GitHub Pages：$pagesUrl" -ForegroundColor Green
+
 
 
 

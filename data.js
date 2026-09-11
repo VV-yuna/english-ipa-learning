@@ -281,33 +281,17 @@
       ])
   ];
 
-  var AUDIO_KEYS = {
-    'i-long': 'i:', 'i-short': 'I', 'e': 'E', 'ae': 'a', 'a-long': 'A:', 'o-short': '0',
-    'aw-long': 'O:', 'u-short': 'U', 'u-long': 'u:', 'caret': 'V', 'er-long': '3:', 'schwa': '@',
-    'ei': 'eI', 'ai': 'aI', 'oi': 'OI', 'oh': 'oU', 'au': 'aU', 'ia': 'I@', 'ea': 'e@', 'ua': 'U@',
-    'p': 'p', 'b': 'b', 't': 't', 'd': 'd', 'k': 'k', 'g': 'g', 'f': 'f', 'v': 'v',
-    'th-voiceless': 'T', 'th-voiced': 'D', 's': 's', 'z': 'z', 'sh': 'S', 'zh': 'Z',
-    'h': 'h', 'ch': 'tS', 'j-sound': 'dZ', 'tr': 'tr', 'dr': 'dr', 'ts': 'ts', 'dz': 'dz',
-    'm': 'm', 'n': 'n', 'ng': 'N', 'l': 'l', 'r': 'r', 'y': 'j', 'w': 'w'
-  };
-
   window.IPA_DATA.forEach(function (item) {
-    item.audioKey = AUDIO_KEYS[item.id];
-    item.audio = {
-      uk: 'assets/audio/uk/' + item.id + '.wav',
-      us: 'assets/audio/us/' + item.id + '.wav'
-    };
     item.diagram = {
       src: 'assets/diagrams/' + item.id + '.svg',
       alt: '/' + item.symbol + '/ 的正面口型与侧面舌位示意图'
     };
   });
 
-  window.IPA_AUDIO_KEYS = AUDIO_KEYS;
-
   window.IPA_BY_ID = window.IPA_DATA.reduce(function (map, item) {
     map[item.id] = item;
     return map;
   }, {});
 })();
+
 

@@ -10,7 +10,6 @@
   var dictionaryCache = new Map();
   var activeId = 0;
   var activeAudio = null;
-  var activeUtterance = null;
   var activePhonemeElement = null;
   var activePhonemeFinish = null;
   var activeBufferSource = null;
@@ -23,9 +22,6 @@
     return accent === 'us' ? 'us' : 'uk';
   }
 
-  function languageFor(accent) {
-    return normalizeAccent(accent) === 'us' ? 'en-US' : 'en-GB';
-  }
 
   function regionFor(accent) {
     return normalizeAccent(accent) === 'us' ? 'us' : 'uk';
@@ -190,60 +186,7 @@
       }
       activeAudio = null;
     }
-    if (activeUtterance && 'speechSynthesis' in window) {
-      try { window.speechSynthesis.cancel(); } catch (error) { /* no-op */ }
-      activeUtterance = null;
-    }
-  }
 
-  function speak(word, accent, id) {
-    return new Promise(function (resolve) {
-      if (!('speechSynthesis' in window) || typeof window.SpeechSynthesisUtterance === 'undefined') {
-        resolve({ source: 'unavailable', word: word, accent: normalizeAccent(accent) });
-        return;
-      }
-
-      var lang = languageFor(accent);
-      var utterance = new SpeechSynthesisUtterance(String(word));
-      var voices = window.speechSynthesis.getVoices ? window.speechSynthesis.getVoices() : [];
-      var exact = voices.find(function (voice) { return voice.lang === lang; });
-      var partial = voices.find(function (voice) { return voice.lang.toLowerCase().indexOf(lang.toLowerCase().slice(0, 2)) === 0; });
-
-      utterance.lang = lang;
-      utterance.rate = 0.78;
-      utterance.pitch = 1;
-      utterance.volume = 1;
-      if (exact || partial) utterance.voice = exact || partial;
-
-      activeUtterance = utterance;
-      var settled = false;
-      var timeout = window.setTimeout(function () { finish({ source: 'speech', word: word, accent: normalizeAccent(accent) }); }, 9000);
-
-      function finish(result) {
-        if (settled) return;
-        settled = true;
-        window.clearTimeout(timeout);
-        if (activeUtterance === utterance) activeUtterance = null;
-        resolve(result);
-      }
-
-      utterance.onend = function () {
-        finish(id === activeId
-          ? { source: 'speech', word: word, accent: normalizeAccent(accent) }
-          : { source: 'cancelled' });
-      };
-      utterance.onerror = function () {
-        finish(id === activeId
-          ? { source: 'speech-failed', word: word, accent: normalizeAccent(accent) }
-          : { source: 'cancelled' });
-      };
-
-      try {
-        window.speechSynthesis.speak(utterance);
-      } catch (error) {
-        finish({ source: 'speech-failed', word: word, accent: normalizeAccent(accent) });
-      }
-    });
   }
 
   function playUrl(url, id) {
@@ -305,8 +248,7 @@
     }
 
     if (navigator.onLine === false) {
-      var offlineResult = await speak(word, normalizedAccent, id);
-      return Object.assign(offlineResult, { reason: 'offline' });
+      return { source: 'no-human-audio', word: word, accent: normalizedAccent, reason: 'offline' };
     }
 
     var urls;
@@ -327,12 +269,12 @@
       }
     }
 
-    var speechResult = await speak(word, normalizedAccent, id);
-    return Object.assign(speechResult, {
+    return {
+      source: 'no-human-audio',
       word: word,
       accent: normalizedAccent,
       reason: url ? 'audio-error' : 'no-dictionary-audio'
-    });
+    };
   }
 
   function preload(word) {
@@ -530,11 +472,6 @@
     if (unlocked) return;
     unlocked = true;
     getAudioContext();
-    try {
-      if ('speechSynthesis' in window && window.speechSynthesis.getVoices) window.speechSynthesis.getVoices();
-    } catch (error) {
-      // Voice warm-up is best effort.
-    }
   }
 
   window.IPAAudio = {
@@ -547,10 +484,13 @@
     preloadWords: preloadWords,
     preload: preload,
     stop: stop,
-    unlock: unlock,
-    languageFor: languageFor
+    unlock: unlock
   };
 })();
+
+
+
+
 
 
 
